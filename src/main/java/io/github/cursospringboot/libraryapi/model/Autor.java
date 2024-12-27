@@ -1,18 +1,15 @@
 package io.github.cursospringboot.libraryapi.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-import javax.lang.model.element.Name;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
 @Entity
 @Table(name = "autor", schema = "public") //schema public nao é obrigatório
-@Getter
-@Setter
+@Data
 public class Autor {
 
     @Id
@@ -29,7 +26,8 @@ public class Autor {
     @Column(name = "nacionalidade", length = 100, nullable = false)
     private String nacionalidade;
 
-    @OneToMany(mappedBy = "autor")
+    // @OneToMany(mappedBy = "autor")
+    @Transient
     private List<Livro> livros;
 
 

@@ -4,11 +4,12 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.UUID;
-
+@Data
 @Entity
 @Table(name = "livro")
-@Data
+
 public class Livro {
 
     @Id
@@ -23,7 +24,7 @@ public class Livro {
     private String titulo;
 
     @Column(name = "data_publicacao")
-    private String dataPublicacao;
+    private LocalDate dataPublicacao;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "genero", length = 30, nullable = false)
@@ -32,7 +33,7 @@ public class Livro {
     @Column(name = "preco", precision = 18)
     private BigDecimal preco;
 
-    @ManyToOne
+    @ManyToOne//(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_autor")
     private Autor autor;
 
