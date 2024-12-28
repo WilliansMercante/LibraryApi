@@ -88,5 +88,4 @@ class LivroRepositoryTest {
         var id = UUID.fromString("0c4eeb30-8417-4114-86b2-968247dbc290");
         livroRepository.deleteById(id);
     }
-
 }
